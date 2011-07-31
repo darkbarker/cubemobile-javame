@@ -71,7 +71,7 @@ public class AppCubeCanvas extends Canvas implements CommandListener
         myCube.draw( g, mySys ); 
         
         g.setColor( 127, 127, 127 );
-        g.drawString( fpsm.toString() + " fps", 0+5, /*displayHeight-5*/0, 0 );     
+        g.drawString( fpsm.toString() + " fps", 0+5, 0, 0 );     
         
         fpsm.proceedevent();
     }

@@ -154,13 +154,14 @@ class Cube8Gran
 {
 	int indexVert[];
 	Color color;
+
 	public Cube8Gran( int v1, int v2, int v3, int v4, Color c)
 	{
-		indexVert = new int[4];
-		indexVert[0] = v1;
-		indexVert[1] = v2;
-		indexVert[2] = v3;
-		indexVert[3] = v4;
-		color = c;
+		this.indexVert = new int[4];
+		this.indexVert[0] = v1;
+		this.indexVert[1] = v2;
+		this.indexVert[2] = v3;
+		this.indexVert[3] = v4;
+		this.color = c;
 	}	
 }

@@ -27,12 +27,12 @@ public class PhisicalSys
         return p;		
     }
 
-    /**
-     * @param p точка на физическом холсте
-     * @return двух(трех)мерная точка (xp,yp,0) - проекция на логику 
-     */
-    Point3 modifToLogic(Point2 p)
-    {
-        return new Point3( (p.x - center.x)/koef, (p.y - center.y)/koef, 0);
-    }
+//    /**
+//     * @param p точка на физическом холсте
+//     * @return двух(трех)мерная точка (xp,yp,0) - проекция на логику 
+//     */
+//    Point3 modifToLogic(Point2 p)
+//    {
+//        return new Point3( (p.x - center.x)/koef, (p.y - center.y)/koef, 0);
+//    }
 }
