@@ -16,7 +16,7 @@ import javax.microedition.lcdui.Graphics;
 public class AppCubeCanvas extends Canvas implements CommandListener
 {
     private Command cmExit; // команда Выход
-    AppCubeMIDlet midlet;  // Главный класс мидлета
+    private AppCubeMIDlet midlet;  // Главный класс мидлета
     private int displayWidth, displayHeight; // Размер экрана
     
     //private boolean initComplete = false; // Был ли экран инициализирован
@@ -49,12 +49,12 @@ public class AppCubeCanvas extends Canvas implements CommandListener
         //--
         myCube = new Cube8();
         fpsm = new FpsMetter();
-       	Point center = new Point(displayWidth/2, displayHeight/2);
-	double koef = ( Math.min(displayWidth,displayHeight) /2.0 ) *0.5;
-	mySys = new PhisicalSys(center,koef);        
+       	Point2 center = new Point2(displayWidth/2, displayHeight/2);
+       	double koef = ( Math.min(displayWidth,displayHeight) /2.0 ) *0.5;
+       	mySys = new PhisicalSys(center,koef);        
         valRotX=0.0075;
-	valRotY=0.0095;
-	valRotZ=0.03;
+        valRotY=0.0095;
+        valRotZ=0.03;
         //sp = new SeparateSubTask();
         //--
         
@@ -71,7 +71,7 @@ public class AppCubeCanvas extends Canvas implements CommandListener
         myCube.draw( g, mySys ); 
         
         g.setColor( 127, 127, 127 );
-	g.drawString( fpsm.toString() + " fps", 0+5, /*displayHeight-5*/0, 0 );     
+        g.drawString( fpsm.toString() + " fps", 0+5, /*displayHeight-5*/0, 0 );     
         
         fpsm.proceedevent();
     }
@@ -83,35 +83,35 @@ public class AppCubeCanvas extends Canvas implements CommandListener
         {
             case KEY_NUM1:
                 valRotX = + 1.0 /50.0; 
-		valRotY = + 1.0 /50.0;
+                valRotY = + 1.0 /50.0;
             break;
             case KEY_NUM2: 
                 valRotX = + 1.0 /50.0;                 
-		valRotY = 0;
+                valRotY = 0;
             break;
              case KEY_NUM3:
                 valRotX = + 1.0 /50.0; 
-		valRotY = - 1.0 /50.0;
+                valRotY = - 1.0 /50.0;
             break;
             case KEY_NUM4:
                 valRotX = 0; 
                 valRotY = + 1.0 /50.0;
             break;
             case KEY_NUM6:               
-		valRotX = 0;
+            	valRotX = 0;
                 valRotY = - 1.0 /50.0;
             break;
             case KEY_NUM7:
                 valRotX = - 1.0 /50.0; 
-		valRotY = + 1.0 /50.0;
+                valRotY = + 1.0 /50.0;
             break;
              case KEY_NUM8: 
                 valRotX = - 1.0 /50.0;
-		valRotY = 0;
+                valRotY = 0;
             break;
              case KEY_NUM9:
                 valRotX = - 1.0 /50.0; 
-		valRotY = - 1.0 /50.0;
+                valRotY = - 1.0 /50.0;
             break;
         }
     }  

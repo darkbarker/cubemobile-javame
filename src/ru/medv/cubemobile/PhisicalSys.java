@@ -6,21 +6,21 @@ package ru.medv.cubemobile;
  */
 public class PhisicalSys
 {    
-    Point center;    
-    double koef;
+    private Point2 center;    
+    private double koef;
     
-    public PhisicalSys( Point c, double k )
+    public PhisicalSys( Point2 center, double koef )
     {
-        center = c;
-        koef = k;
+        this.center = center;
+        this.koef = koef;
     }	
     
-    Point fromPoint3(Point3 p3)
+    Point2 fromPoint3(Point3 p3)
     {	
         double xpr = p3.x;
         double ypr = -p3.y;		
 		
-        Point p = new Point();
+        Point2 p = new Point2();
         p.x = (int) (xpr * koef + center.x);
         p.y = (int) (ypr * koef + center.y);
 		
@@ -31,7 +31,7 @@ public class PhisicalSys
      * @param p точка на физическом холсте
      * @return двух(трех)мерная точка (xp,yp,0) - проекция на логику 
      */
-    Point3 modifToLogic(Point p)
+    Point3 modifToLogic(Point2 p)
     {
         return new Point3( (p.x - center.x)/koef, (p.y - center.y)/koef, 0);
     }

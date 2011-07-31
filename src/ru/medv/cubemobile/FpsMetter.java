@@ -1,7 +1,6 @@
 package ru.medv.cubemobile;
 
 /**
- * 
  * @author DimOn
  */
 public class FpsMetter
