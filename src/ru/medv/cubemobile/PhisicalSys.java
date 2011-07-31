@@ -1,28 +1,29 @@
 package ru.medv.cubemobile;
 
 /**
- *
- * @author DimOn
+ * Физическая среда, в которой обитает наш объект. Представляет собой информацию
+ * обобщённую о том, где цент экрана и какого размера на нём единичный кубикъ.
+ * @author dimon
  */
 public class PhisicalSys
 {    
     private Point2 center;    
-    private double koef;
+    private double koefx;
+    private double koefy;
     
-    public PhisicalSys( Point2 center, double koef )
+    public PhisicalSys( Point2 center, double koefx, double koefy )
     {
         this.center = center;
-        this.koef = koef;
+        this.koefx = koefx;
+        this.koefy = koefy;
     }	
     
-    Point2 fromPoint3(Point3 p3)
+    public Point2 fromPoint3( Point3 p3 )
     {	
-        double xpr = p3.x;
-        double ypr = -p3.y;		
-		
         Point2 p = new Point2();
-        p.x = (int) (xpr * koef + center.x);
-        p.y = (int) (ypr * koef + center.y);
+
+        p.x = (int) (p3.x * koefx + center.x);
+        p.y = (int) (p3.y * koefy + center.y);
 		
         return p;		
     }

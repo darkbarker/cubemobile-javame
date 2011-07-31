@@ -8,20 +8,20 @@ import javax.microedition.lcdui.Graphics;
  */
 public class Cube8
 {
-	Point3 cube[];
-	Cube8Gran gran[];
+	private Point3 points[];
+	private Cube8Gran gran[];
 	
 	Cube8()
 	{
-		cube=new Point3[8];		
-		cube[0]=new Point3(+1.0,+1.0,-1.0); //н гр. пв
-		cube[1]=new Point3(-1.0,+1.0,-1.0); //н гр. лв
-		cube[2]=new Point3(-1.0,-1.0,-1.0); //н гр. лн
-		cube[3]=new Point3(+1.0,-1.0,-1.0); //н гр. пн
-		cube[4]=new Point3(+1.0,+1.0,+1.0); //в гр. пв
-		cube[5]=new Point3(-1.0,+1.0,+1.0); //в гр. лв
-		cube[6]=new Point3(-1.0,-1.0,+1.0); //в гр. лн
-		cube[7]=new Point3(+1.0,-1.0,+1.0); //в гр. пн
+		points=new Point3[8];		
+		points[0]=new Point3(+1.0,+1.0,-1.0); //н гр. пв
+		points[1]=new Point3(-1.0,+1.0,-1.0); //н гр. лв
+		points[2]=new Point3(-1.0,-1.0,-1.0); //н гр. лн
+		points[3]=new Point3(+1.0,-1.0,-1.0); //н гр. пн
+		points[4]=new Point3(+1.0,+1.0,+1.0); //в гр. пв
+		points[5]=new Point3(-1.0,+1.0,+1.0); //в гр. лв
+		points[6]=new Point3(-1.0,-1.0,+1.0); //в гр. лн
+		points[7]=new Point3(+1.0,-1.0,+1.0); //в гр. пн
 		gran=new Cube8Gran[6];                
 		gran[0]=new Cube8Gran(0,1,2,3, Color.BLUE);   //н гр.
 		gran[1]=new Cube8Gran(4,5,1,0, Color.CYAN);   //up гр.
@@ -45,10 +45,10 @@ public class Cube8
 		for(int i=0;i<8;i++)
 		{
 			Point3 np = new Point3(); 
-			np.x = cube[i].x;
-			np.y = cube[i].y * C - cube[i].z * S;
-			np.z = cube[i].y * S + cube[i].z * C;			
-			cube[i] = np;
+			np.x = points[i].x;
+			np.y = points[i].y * C - points[i].z * S;
+			np.z = points[i].y * S + points[i].z * C;			
+			points[i] = np;
 		}
 	}
 
@@ -59,10 +59,10 @@ public class Cube8
 		for(int i=0;i<8;i++)
 		{
 			Point3 np = new Point3(); 
-			np.x = cube[i].x * C + cube[i].z * S;
-			np.y = cube[i].y;
-			np.z = -cube[i].x * S + cube[i].z * C;			
-			cube[i] = np;
+			np.x = points[i].x * C + points[i].z * S;
+			np.y = points[i].y;
+			np.z = -points[i].x * S + points[i].z * C;			
+			points[i] = np;
 		}
 	}
 
@@ -73,10 +73,10 @@ public class Cube8
 		for(int i=0;i<8;i++)
 		{
 			Point3 np = new Point3(); 
-			np.x = cube[i].x * C - cube[i].y * S;
-			np.y = cube[i].x * S + cube[i].y * C;
-			np.z = cube[i].z;			
-			cube[i] = np;
+			np.x = points[i].x * C - points[i].y * S;
+			np.y = points[i].x * S + points[i].y * C;
+			np.z = points[i].z;			
+			points[i] = np;
 			/*
 			Point3 pcopy = new Point3();
 			pcopy = cube[i];
@@ -93,20 +93,20 @@ public class Cube8
 		
 		g.setColor( Color.mul( cg.color, getCosPhiGran(gri) ).getRGB() );
 		g.fillTriangle(
-				ps.fromPoint3( cube[ cg.indexVert[0] ] ).x,
-				ps.fromPoint3( cube[ cg.indexVert[0] ] ).y,
-				ps.fromPoint3( cube[ cg.indexVert[1] ] ).x,
-				ps.fromPoint3( cube[ cg.indexVert[1] ] ).y,
-                ps.fromPoint3( cube[ cg.indexVert[2] ] ).x,
-                ps.fromPoint3( cube[ cg.indexVert[2] ] ).y
+				ps.fromPoint3( points[ cg.indexVert[0] ] ).x,
+				ps.fromPoint3( points[ cg.indexVert[0] ] ).y,
+				ps.fromPoint3( points[ cg.indexVert[1] ] ).x,
+				ps.fromPoint3( points[ cg.indexVert[1] ] ).y,
+                ps.fromPoint3( points[ cg.indexVert[2] ] ).x,
+                ps.fromPoint3( points[ cg.indexVert[2] ] ).y
 		);
 		g.fillTriangle(
-				ps.fromPoint3( cube[ cg.indexVert[2] ] ).x,
-				ps.fromPoint3( cube[ cg.indexVert[2] ] ).y,
-				ps.fromPoint3( cube[ cg.indexVert[3] ] ).x,
-				ps.fromPoint3( cube[ cg.indexVert[3] ] ).y,
-				ps.fromPoint3( cube[ cg.indexVert[0] ] ).x,
-				ps.fromPoint3( cube[ cg.indexVert[0] ] ).y
+				ps.fromPoint3( points[ cg.indexVert[2] ] ).x,
+				ps.fromPoint3( points[ cg.indexVert[2] ] ).y,
+				ps.fromPoint3( points[ cg.indexVert[3] ] ).x,
+				ps.fromPoint3( points[ cg.indexVert[3] ] ).y,
+				ps.fromPoint3( points[ cg.indexVert[0] ] ).x,
+				ps.fromPoint3( points[ cg.indexVert[0] ] ).y
 		);
 	}
 	
@@ -114,15 +114,15 @@ public class Cube8
 	{
 		Cube8Gran cg = gran[gri];
 		
-		double X1=cube[cg.indexVert[0]].x;
-		double Y1=cube[cg.indexVert[0]].y;
-		double Z1=cube[cg.indexVert[0]].z;
-		double X2=cube[cg.indexVert[1]].x;
-		double Y2=cube[cg.indexVert[1]].y;
-		double Z2=cube[cg.indexVert[1]].z;
-		double X3=cube[cg.indexVert[2]].x;
-		double Y3=cube[cg.indexVert[2]].y;
-		double Z3=cube[cg.indexVert[2]].z;		
+		double X1=points[cg.indexVert[0]].x;
+		double Y1=points[cg.indexVert[0]].y;
+		double Z1=points[cg.indexVert[0]].z;
+		double X2=points[cg.indexVert[1]].x;
+		double Y2=points[cg.indexVert[1]].y;
+		double Z2=points[cg.indexVert[1]].z;
+		double X3=points[cg.indexVert[2]].x;
+		double Y3=points[cg.indexVert[2]].y;
+		double Z3=points[cg.indexVert[2]].z;		
 		
 		double xv = (Y1-Y2)*(Z1-Z3) - (Z1-Z2)*(Y1-Y3);
 		double yv = (Z1-Z2)*(X1-X3) - (X1-X2)*(Z1-Z3);
@@ -144,7 +144,7 @@ public class Cube8
 	
 	boolean isGranVisible( int gri )
 	{		
-		return ( getCosPhiGran(gri) > 0 );		
+		return getCosPhiGran(gri) > 0;		
 	}
 }
 

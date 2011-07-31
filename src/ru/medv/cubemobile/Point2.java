@@ -1,10 +1,9 @@
 package ru.medv.cubemobile;
 
 /**
- * 2D-point class
- * @author DimOn
+ * Двумерная целочисленная точка.
+ * @author dimon
  */
-
 public class Point2
 {
     int x;

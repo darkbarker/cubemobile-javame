@@ -1,7 +1,8 @@
 package ru.medv.cubemobile;
 
 /**
- * @author DimOn
+ * Цвет, в трёх компонентах. 
+ * @author dimon
  */
 public class Color
 {
@@ -12,9 +13,9 @@ public class Color
 	final static Color RED = new Color(255, 0, 0);
 	final static Color YELLOW = new Color(255, 255, 0);
 
-	int r;
-	int g;
-	int b;
+	private int r;
+	private int g;
+	private int b;
 
 	public Color()
 	{

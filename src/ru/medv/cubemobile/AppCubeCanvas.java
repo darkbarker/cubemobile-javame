@@ -51,7 +51,7 @@ public class AppCubeCanvas extends Canvas implements CommandListener
         fpsm = new FpsMetter();
        	Point2 center = new Point2(displayWidth/2, displayHeight/2);
        	double koef = ( Math.min(displayWidth,displayHeight) /2.0 ) *0.5;
-       	mySys = new PhisicalSys(center,koef);        
+       	mySys = new PhisicalSys( center, koef, -koef );        
         valRotX=0.0075;
         valRotY=0.0095;
         valRotZ=0.03;
