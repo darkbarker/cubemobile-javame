@@ -15,14 +15,14 @@ import javax.microedition.lcdui.Graphics;
  */
 public class AppCubeCanvas extends Canvas implements CommandListener
 {
-    private Command cmExit; // команда Выход
-    private AppCubeMIDlet midlet;  // Главный класс мидлета
-    private int displayWidth, displayHeight; // Размер экрана
+    private Command cmExit; // РєРѕРјР°РЅРґР° Р’С‹С…РѕРґ
+    private AppCubeMIDlet midlet;  // Р“Р»Р°РІРЅС‹Р№ РєР»Р°СЃСЃ РјРёРґР»РµС‚Р°
+    private int displayWidth, displayHeight; // Р Р°Р·РјРµСЂ СЌРєСЂР°РЅР°
     
-    //private boolean initComplete = false; // Был ли экран инициализирован
+    //private boolean initComplete = false; // Р‘С‹Р» Р»Рё СЌРєСЂР°РЅ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ
     
-    private Timer tm; // таймер
-    private TimerTask tt; // Задача для выполнения
+    private Timer tm; // С‚Р°Р№РјРµСЂ
+    private TimerTask tt; // Р—Р°РґР°С‡Р° РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ
     
     //--
     private PhisicalSys mySys;

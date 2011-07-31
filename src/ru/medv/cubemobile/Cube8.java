@@ -14,21 +14,21 @@ public class Cube8
 	Cube8()
 	{
 		cube=new Point3[8];		
-		cube[0]=new Point3(+1.0,+1.0,-1.0); //н гр. пв
-		cube[1]=new Point3(-1.0,+1.0,-1.0); //н гр. лв
-		cube[2]=new Point3(-1.0,-1.0,-1.0); //н гр. лн
-		cube[3]=new Point3(+1.0,-1.0,-1.0); //н гр. пн
-		cube[4]=new Point3(+1.0,+1.0,+1.0); //в гр. пв
-		cube[5]=new Point3(-1.0,+1.0,+1.0); //в гр. лв
-		cube[6]=new Point3(-1.0,-1.0,+1.0); //в гр. лн
-		cube[7]=new Point3(+1.0,-1.0,+1.0); //в гр. пн
+		cube[0]=new Point3(+1.0,+1.0,-1.0); //РЅ РіСЂ. РїРІ
+		cube[1]=new Point3(-1.0,+1.0,-1.0); //РЅ РіСЂ. Р»РІ
+		cube[2]=new Point3(-1.0,-1.0,-1.0); //РЅ РіСЂ. Р»РЅ
+		cube[3]=new Point3(+1.0,-1.0,-1.0); //РЅ РіСЂ. РїРЅ
+		cube[4]=new Point3(+1.0,+1.0,+1.0); //РІ РіСЂ. РїРІ
+		cube[5]=new Point3(-1.0,+1.0,+1.0); //РІ РіСЂ. Р»РІ
+		cube[6]=new Point3(-1.0,-1.0,+1.0); //РІ РіСЂ. Р»РЅ
+		cube[7]=new Point3(+1.0,-1.0,+1.0); //РІ РіСЂ. РїРЅ
 		gran=new Cube8Gran[6];                
-		gran[0]=new Cube8Gran(0,1,2,3, Color.BLUE);   //н гр.
-		gran[1]=new Cube8Gran(4,5,1,0, Color.CYAN);   //up гр.
-		gran[2]=new Cube8Gran(5,6,2,1, Color.GREEN);  //lt гр.
-		gran[3]=new Cube8Gran(6,7,3,2, Color.MAGENTA);//dn гр.
-		gran[4]=new Cube8Gran(7,4,0,3, Color.RED);    //rt гр.
-		gran[5]=new Cube8Gran(7,6,5,4, Color.YELLOW); //в гр.
+		gran[0]=new Cube8Gran(0,1,2,3, Color.BLUE);   //РЅ РіСЂ.
+		gran[1]=new Cube8Gran(4,5,1,0, Color.CYAN);   //up РіСЂ.
+		gran[2]=new Cube8Gran(5,6,2,1, Color.GREEN);  //lt РіСЂ.
+		gran[3]=new Cube8Gran(6,7,3,2, Color.MAGENTA);//dn РіСЂ.
+		gran[4]=new Cube8Gran(7,4,0,3, Color.RED);    //rt РіСЂ.
+		gran[5]=new Cube8Gran(7,6,5,4, Color.YELLOW); //РІ РіСЂ.
 	}
 	
 	void draw( Graphics g, PhisicalSys ps )
@@ -131,9 +131,9 @@ public class Cube8
 		return new Point3( xv, yv, zv );
 	}
 	
-	/** Косинус (нормальграни^направлениезрения)
-	 * @param gri - индекс грани
-	 * @return косинус угла между нормалью к грани и вектором на наш глаз 
+	/** РљРѕСЃРёРЅСѓСЃ (РЅРѕСЂРјР°Р»СЊРіСЂР°РЅРё^РЅР°РїСЂР°РІР»РµРЅРёРµР·СЂРµРЅРёСЏ)
+	 * @param gri - РёРЅРґРµРєСЃ РіСЂР°РЅРё
+	 * @return РєРѕСЃРёРЅСѓСЃ СѓРіР»Р° РјРµР¶РґСѓ РЅРѕСЂРјР°Р»СЊСЋ Рє РіСЂР°РЅРё Рё РІРµРєС‚РѕСЂРѕРј РЅР° РЅР°С€ РіР»Р°Р· 
 	 */
 	double getCosPhiGran(int gri)
 	{
@@ -149,7 +149,7 @@ public class Cube8
 }
 
 
-/** Грань куба - индексы вершин и цвет грани. */
+/** Р“СЂР°РЅСЊ РєСѓР±Р° - РёРЅРґРµРєСЃС‹ РІРµСЂС€РёРЅ Рё С†РІРµС‚ РіСЂР°РЅРё. */
 class Cube8Gran
 {
 	int indexVert[];
