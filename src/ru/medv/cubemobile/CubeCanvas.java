@@ -13,7 +13,7 @@ import javax.microedition.lcdui.Graphics;
  *
  * @author DimOn
  */
-public class AppCubeCanvas extends Canvas implements CommandListener
+public class CubeCanvas extends Canvas implements CommandListener
 {
     private Command cmExit; // команда Выход
     private AppCubeMIDlet midlet;  // Главный класс мидлета
@@ -35,7 +35,7 @@ public class AppCubeCanvas extends Canvas implements CommandListener
     //private SeparateSubTask sp = null;
     
     
-    public AppCubeCanvas(AppCubeMIDlet midlet)
+    public CubeCanvas(AppCubeMIDlet midlet)
     {
         this.midlet = midlet;
         
@@ -63,6 +63,25 @@ public class AppCubeCanvas extends Canvas implements CommandListener
         tm.scheduleAtFixedRate(tt, 0, 1);
     }
     
+	public void start()
+	{
+		 setFullScreenMode(true);
+		 // стартуем таймеры TODO
+	}
+
+	/**
+	 * Тут происходит освобождение ресурсов по максимуму.
+	 */
+	public void pause()
+	{		
+		// стопим таймеры TODO
+	}
+
+	public void destroy()
+	{
+		pause();		
+	}   
+	
     public void paint(Graphics g)
     {
         g.setColor(0, 0, 0);

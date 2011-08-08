@@ -7,7 +7,7 @@ public class FpsMetter
 {
 	private long pred;
 	private long curit;
-	double dFps;
+	long lFps;
 
 	FpsMetter()
 	{
@@ -17,20 +17,19 @@ public class FpsMetter
 	void reset()
 	{
 		pred = System.currentTimeMillis();
-		curit = 0;
-		dFps = 0.0;
+		curit = 0L;
+		lFps = 0L;
 	}
 
 	void proceedevent()
 	{
 		long cur = System.currentTimeMillis();
 		++curit;
-		dFps = curit * 1000.0 / (cur - pred);
-		// pred = cur;
+		lFps = curit * 1000L / (cur - pred);
 	}
 
 	public String toString()
 	{
-		return String.valueOf((int) dFps);
+		return String.valueOf(lFps);
 	}
 }

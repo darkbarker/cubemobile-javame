@@ -10,25 +10,28 @@ public class AppCubeMIDlet
 	extends MIDlet
 {
     private Display display;
-    private AppCubeCanvas myCanvas;
+    private CubeCanvas cubeCanvas;
     
     public AppCubeMIDlet()
     {  
         display = Display.getDisplay( this ); 
-        myCanvas = new AppCubeCanvas( this );
+        cubeCanvas = new CubeCanvas( this );
     }
 
     public void startApp()
     {
-         display.setCurrent( myCanvas );
+    	cubeCanvas.start();
+        display.setCurrent( cubeCanvas );
     }
     
     public void pauseApp()
     {
+    	cubeCanvas.pause();
     }
     
     public void destroyApp(boolean unconditional)
     {
+    	cubeCanvas.destroy();
     }
 
     public void exitMIDlet()
