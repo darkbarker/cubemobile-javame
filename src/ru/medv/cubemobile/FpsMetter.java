@@ -5,9 +5,9 @@ package ru.medv.cubemobile;
  */
 public class FpsMetter
 {
-	private long pred;
-	private long curit;
-	long lFps;
+	private long inittime;
+	private long curcount;
+	private long lFps;
 
 	FpsMetter()
 	{
@@ -16,16 +16,16 @@ public class FpsMetter
 
 	void reset()
 	{
-		pred = System.currentTimeMillis();
-		curit = 0L;
+		inittime = System.currentTimeMillis();
+		curcount = 0L;
 		lFps = 0L;
 	}
 
 	void proceedevent()
 	{
 		long cur = System.currentTimeMillis();
-		++curit;
-		lFps = curit * 1000L / (cur - pred);
+		++curcount;
+		lFps = curcount * 1000L / (cur - inittime);
 	}
 
 	public String toString()
