@@ -1,7 +1,9 @@
 package ru.medv.cubemobile;
 
 /**
- * @author DimOn
+ * Мерка фпс на основе общего кол-ва тиков от начала времён (со сброса).
+ * Почему-то не шибко прилично считает...
+ * @author dimon
  */
 public class FpsMetter
 {
