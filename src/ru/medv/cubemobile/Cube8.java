@@ -9,7 +9,7 @@ import javax.microedition.lcdui.Graphics;
 public class Cube8
 {
 	private Point3 points[];
-	private Cube8Gran gran[];
+	private Cube8Gran grans[];
 	
 	Cube8()
 	{
@@ -22,13 +22,13 @@ public class Cube8
 		points[5]=new Point3(-1.0,+1.0,+1.0); //в гр. лв
 		points[6]=new Point3(-1.0,-1.0,+1.0); //в гр. лн
 		points[7]=new Point3(+1.0,-1.0,+1.0); //в гр. пн
-		gran=new Cube8Gran[6];                
-		gran[0]=new Cube8Gran(0,1,2,3, Color.BLUE);   //н гр.
-		gran[1]=new Cube8Gran(4,5,1,0, Color.CYAN);   //up гр.
-		gran[2]=new Cube8Gran(5,6,2,1, Color.GREEN);  //lt гр.
-		gran[3]=new Cube8Gran(6,7,3,2, Color.MAGENTA);//dn гр.
-		gran[4]=new Cube8Gran(7,4,0,3, Color.RED);    //rt гр.
-		gran[5]=new Cube8Gran(7,6,5,4, Color.YELLOW); //в гр.
+		grans=new Cube8Gran[6];                
+		grans[0]=new Cube8Gran(0,1,2,3, Color.BLUE);   //н гр.
+		grans[1]=new Cube8Gran(4,5,1,0, Color.CYAN);   //up гр.
+		grans[2]=new Cube8Gran(5,6,2,1, Color.GREEN);  //lt гр.
+		grans[3]=new Cube8Gran(6,7,3,2, Color.MAGENTA);//dn гр.
+		grans[4]=new Cube8Gran(7,4,0,3, Color.RED);    //rt гр.
+		grans[5]=new Cube8Gran(7,6,5,4, Color.YELLOW); //в гр.
 	}
 	
 	void draw( Graphics g, PhisicalSys ps )
@@ -89,7 +89,7 @@ public class Cube8
 
 	void drawGran(Graphics g, PhisicalSys ps, int gri)
 	{	
-		Cube8Gran cg = gran[gri];
+		Cube8Gran cg = grans[gri];
 		
 		g.setColor( Color.mul( cg.color, getCosPhiGran(gri) ).getRGB() );
 		g.fillTriangle(
@@ -112,7 +112,7 @@ public class Cube8
 	
 	private Point3 getNormalGran(int gri)
 	{
-		Cube8Gran cg = gran[gri];
+		Cube8Gran cg = grans[gri];
 		
 		double X1=points[cg.indexVert[0]].x;
 		double Y1=points[cg.indexVert[0]].y;
@@ -142,7 +142,7 @@ public class Cube8
 		return p3.getScalar(pVis) / p3.getVectorLenght() / pVis.getVectorLenght();
 	}
 	
-	boolean isGranVisible( int gri )
+	boolean isGranVisible( int gri )//TODO внести в прорисовку
 	{		
 		return getCosPhiGran(gri) > 0;		
 	}

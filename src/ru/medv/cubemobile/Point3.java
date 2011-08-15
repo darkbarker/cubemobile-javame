@@ -33,7 +33,7 @@ public class Point3
      * @param p3 другая точка
      * @return скалярное произведение.
      */
-    public double getScalar(Point3 p3)
+    public double getScalar( Point3 p3 )
     {
         return p3.x * x + p3.y * y + p3.z * z;
     }

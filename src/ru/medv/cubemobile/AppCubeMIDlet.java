@@ -8,7 +8,7 @@ import javax.microedition.lcdui.Form;
 import javax.microedition.midlet.MIDlet;
 
 /**
- * @author  DimOn
+ * @author dimon
  */
 public class AppCubeMIDlet
 	extends MIDlet

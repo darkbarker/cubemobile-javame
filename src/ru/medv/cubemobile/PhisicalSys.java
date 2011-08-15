@@ -21,19 +21,17 @@ public class PhisicalSys
     public Point2 fromPoint3( Point3 p3 )
     {	
         Point2 p = new Point2();
-
         p.x = (int) (p3.x * koefx + center.x);
         p.y = (int) (p3.y * koefy + center.y);
-		
         return p;		
     }
 
-//    /**
-//     * @param p точка на физическом холсте
-//     * @return двух(трех)мерная точка (xp,yp,0) - проекция на логику 
-//     */
-//    Point3 modifToLogic(Point2 p)
-//    {
-//        return new Point3( (p.x - center.x)/koef, (p.y - center.y)/koef, 0);
-//    }
+    /**
+     * @param p точка на физическом холсте
+     * @return двух(трех)мерная точка (xp,yp,0) - проекция на логику 
+     */
+	public Point3 modifToLogic(Point2 p)
+    {
+        return new Point3( (p.x - center.x)/koefx, (p.y - center.y)/koefy, 0);
+    }
 }
