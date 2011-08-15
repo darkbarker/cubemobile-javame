@@ -4,25 +4,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.microedition.lcdui.Canvas;
-import javax.microedition.lcdui.Command;
-import javax.microedition.lcdui.CommandListener;
-import javax.microedition.lcdui.Displayable;
 import javax.microedition.lcdui.Graphics;
 
 /**
  *
  * @author DimOn
  */
-public class CubeCanvas extends Canvas implements CommandListener
+public class CubeCanvas extends Canvas
 {
-    private Command cmExit; // команда Выход
     private AppCubeMIDlet midlet;  // Главный класс мидлета
     private int displayWidth, displayHeight; // Размер экрана
-    
-    //private boolean initComplete = false; // Был ли экран инициализирован
-    
+
     private Timer tm; // таймер
-    private TimerTask tt; // Задача для выполнения
+    //private TimerTask tt; // Задача для выполнения
     
     //--
     private PhisicalSys mySys;
@@ -32,16 +26,12 @@ public class CubeCanvas extends Canvas implements CommandListener
     
     private FpsMetter fpsm;
     
-    //private SeparateSubTask sp = null;
+    boolean paused;
     
     
     public CubeCanvas(AppCubeMIDlet midlet)
     {
         this.midlet = midlet;
-        
-        cmExit = new Command("Exit", Command.EXIT, 0);
-        addCommand(cmExit);
-        setCommandListener(this);
         
         displayWidth = getWidth();
         displayHeight = getHeight();
@@ -58,15 +48,22 @@ public class CubeCanvas extends Canvas implements CommandListener
         //sp = new SeparateSubTask();
         //--
         
-        tm = new Timer();
-        tt = new DrawTask();
-        tm.scheduleAtFixedRate(tt, 0, 1);
+        paused = true; 
+
+        setFullScreenMode(true);
     }
     
 	public void start()
 	{
-		 setFullScreenMode(true);
-		 // стартуем таймеры TODO
+		if( paused )
+		{
+			paused = false;
+			// стартуем таймеры
+			TimerTask tt = new DrawTask();
+	        tm = new Timer();
+	        tm.scheduleAtFixedRate(tt, 0, 1);
+		}
+		repaint();
 	}
 
 	/**
@@ -74,12 +71,24 @@ public class CubeCanvas extends Canvas implements CommandListener
 	 */
 	public void pause()
 	{		
-		// стопим таймеры TODO
+        if( !paused )
+        {
+            paused = true;
+            // стопим таймеры
+            tm.cancel();
+            tm = null;
+        }
+        repaint();
 	}
 
 	public void destroy()
 	{
 		pause();		
+	}	
+
+	public boolean isPaused()
+	{		
+		return paused;
 	}   
 	
     public void paint(Graphics g)
@@ -142,11 +151,6 @@ public class CubeCanvas extends Canvas implements CommandListener
         myCube.rotZ(valRotZ);
     }
      
-    public void commandAction(Command c, Displayable s)
-    {
-        if(c == cmExit) midlet.exitMIDlet();
-    }  
-    
     private class DrawTask extends TimerTask
     {
         public final void run()
@@ -154,24 +158,5 @@ public class CubeCanvas extends Canvas implements CommandListener
             updateDisplay();
             repaint();
         }
-    }    
-     
-    /* 
-    private class SeparateSubTask extends Thread
-    {
-        SeparateSubTask()
-        {
-            start();
-        }
-
-        public void run()
-        {
-            while (true)
-            {
-                updateDisplay();
-                repaint();   			
-            }
-        }
     }
-    */
 }
