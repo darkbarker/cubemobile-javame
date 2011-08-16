@@ -13,7 +13,7 @@ public class Cube8
 	
 	Cube8()
 	{
-		points=new Point3[8];		
+		points = new Point3[8];		
 		points[0]=new Point3(+1.0,+1.0,-1.0); //н гр. пв
 		points[1]=new Point3(-1.0,+1.0,-1.0); //н гр. лв
 		points[2]=new Point3(-1.0,-1.0,-1.0); //н гр. лн
@@ -22,7 +22,7 @@ public class Cube8
 		points[5]=new Point3(-1.0,+1.0,+1.0); //в гр. лв
 		points[6]=new Point3(-1.0,-1.0,+1.0); //в гр. лн
 		points[7]=new Point3(+1.0,-1.0,+1.0); //в гр. пн
-		grans=new Cube8Gran[6];                
+		grans = new Cube8Gran[6];                
 		grans[0]=new Cube8Gran(0,1,2,3, Color.BLUE);   //н гр.
 		grans[1]=new Cube8Gran(4,5,1,0, Color.CYAN);   //up гр.
 		grans[2]=new Cube8Gran(5,6,2,1, Color.GREEN);  //lt гр.
@@ -33,16 +33,15 @@ public class Cube8
 	
 	void draw( Graphics g, PhisicalSys ps )
 	{
-		for(int i=0;i<6;i++)
-			if(isGranVisible(i))
-				drawGran(g, ps, i);
+		for( int i=0; i<6; i++ )
+			drawGran(g, ps, i);
 	}
 	
-	void rotX(double g)
+	void rotX( double g )
 	{
 		double C = Math.cos(g); 
 		double S = Math.sin(g);
-		for(int i=0;i<8;i++)
+		for( int i=0; i<8; i++ )
 		{
 			Point3 np = new Point3(); 
 			np.x = points[i].x;
@@ -52,11 +51,11 @@ public class Cube8
 		}
 	}
 
-	void rotY(double g)
+	void rotY( double g )
 	{
 		double C = Math.cos(g); 
 		double S = Math.sin(g);
-		for(int i=0;i<8;i++)
+		for( int i=0; i<8; i++ )
 		{
 			Point3 np = new Point3(); 
 			np.x = points[i].x * C + points[i].z * S;
@@ -66,11 +65,11 @@ public class Cube8
 		}
 	}
 
-	void rotZ(double g)
+	void rotZ( double g )
 	{
 		double C = Math.cos(g); 
 		double S = Math.sin(g);
-		for(int i=0;i<8;i++)
+		for( int i=0; i<8; i++ )
 		{
 			Point3 np = new Point3(); 
 			np.x = points[i].x * C - points[i].y * S;
@@ -87,11 +86,14 @@ public class Cube8
 		}
 	}
 
-	void drawGran(Graphics g, PhisicalSys ps, int gri)
+	void drawGran( Graphics g, PhisicalSys ps, int gri )
 	{	
+		double cos = getCosPhiGran(gri);
+		if( cos <= 0 ) return;
+		
 		Cube8Gran cg = grans[gri];
 		
-		g.setColor( Color.mul( cg.color, getCosPhiGran(gri) ).getRGB() );
+		g.setColor( Color.mul( cg.color, cos ).getRGB() );
 		g.fillTriangle(
 				ps.fromPoint3( points[ cg.indexVert[0] ] ).x,
 				ps.fromPoint3( points[ cg.indexVert[0] ] ).y,
@@ -135,16 +137,11 @@ public class Cube8
 	 * @param gri - индекс грани
 	 * @return косинус угла между нормалью к грани и вектором на наш глаз 
 	 */
-	double getCosPhiGran(int gri)
+	double getCosPhiGran( int gri )
 	{
-		Point3 p3 = getNormalGran(gri);	
+		Point3 p3 = getNormalGran( gri );	
 		Point3 pVis = new Point3(0,0,1);
 		return p3.getScalar(pVis) / p3.getVectorLenght() / pVis.getVectorLenght();
-	}
-	
-	boolean isGranVisible( int gri )//TODO внести в прорисовку
-	{		
-		return getCosPhiGran(gri) > 0;		
 	}
 }
 
