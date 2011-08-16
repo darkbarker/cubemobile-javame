@@ -94,21 +94,27 @@ public class Cube8
 		Cube8Gran cg = grans[gri];
 		
 		g.setColor( Color.mul( cg.color, cos ).getRGB() );
+		
+		Point2 p0 = ps.fromPoint3( points[ cg.indexVert[0] ] );
+		Point2 p1 = ps.fromPoint3( points[ cg.indexVert[1] ] );
+		Point2 p2 = ps.fromPoint3( points[ cg.indexVert[2] ] );
+		Point2 p3 = ps.fromPoint3( points[ cg.indexVert[3] ] );
+		
 		g.fillTriangle(
-				ps.fromPoint3( points[ cg.indexVert[0] ] ).x,
-				ps.fromPoint3( points[ cg.indexVert[0] ] ).y,
-				ps.fromPoint3( points[ cg.indexVert[1] ] ).x,
-				ps.fromPoint3( points[ cg.indexVert[1] ] ).y,
-                ps.fromPoint3( points[ cg.indexVert[2] ] ).x,
-                ps.fromPoint3( points[ cg.indexVert[2] ] ).y
+				p0.x,
+				p0.y,
+				p1.x,
+				p1.y,
+				p2.x,
+				p2.y
 		);
 		g.fillTriangle(
-				ps.fromPoint3( points[ cg.indexVert[2] ] ).x,
-				ps.fromPoint3( points[ cg.indexVert[2] ] ).y,
-				ps.fromPoint3( points[ cg.indexVert[3] ] ).x,
-				ps.fromPoint3( points[ cg.indexVert[3] ] ).y,
-				ps.fromPoint3( points[ cg.indexVert[0] ] ).x,
-				ps.fromPoint3( points[ cg.indexVert[0] ] ).y
+				p2.x,
+				p2.y,
+				p3.x,
+				p3.y,
+				p0.x,
+				p0.y
 		);
 	}
 	
