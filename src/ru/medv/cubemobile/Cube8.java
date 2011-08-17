@@ -9,7 +9,7 @@ import javax.microedition.lcdui.Graphics;
 public class Cube8
 {
 	private Point3 points[];
-	private Cube8Gran grans[];
+	private Cube8Triangle triangles[];
 	
 	Cube8()
 	{
@@ -22,18 +22,24 @@ public class Cube8
 		points[5]=new Point3(-1.0,+1.0,+1.0); //в гр. лв
 		points[6]=new Point3(-1.0,-1.0,+1.0); //в гр. лн
 		points[7]=new Point3(+1.0,-1.0,+1.0); //в гр. пн
-		grans = new Cube8Gran[6];                
-		grans[0]=new Cube8Gran(0,1,2,3, Color.BLUE);   //н гр.
-		grans[1]=new Cube8Gran(4,5,1,0, Color.CYAN);   //up гр.
-		grans[2]=new Cube8Gran(5,6,2,1, Color.GREEN);  //lt гр.
-		grans[3]=new Cube8Gran(6,7,3,2, Color.MAGENTA);//dn гр.
-		grans[4]=new Cube8Gran(7,4,0,3, Color.RED);    //rt гр.
-		grans[5]=new Cube8Gran(7,6,5,4, Color.YELLOW); //в гр.
+		triangles = new Cube8Triangle[12];                
+		triangles[0]=new Cube8Triangle(0,1,2, Color.BLUE);   //н гр.
+		triangles[1]=new Cube8Triangle(2,3,0, Color.BLUE);   //н гр.
+		triangles[2]=new Cube8Triangle(4,5,1, Color.CYAN);   //up гр.
+		triangles[3]=new Cube8Triangle(1,0,4, Color.CYAN);   //up гр.
+		triangles[4]=new Cube8Triangle(5,6,2, Color.GREEN);  //lt гр.
+		triangles[5]=new Cube8Triangle(2,1,5, Color.GREEN);  //lt гр.
+		triangles[6]=new Cube8Triangle(6,7,3, Color.MAGENTA);//dn гр.
+		triangles[7]=new Cube8Triangle(3,2,6, Color.MAGENTA);//dn гр.
+		triangles[8]=new Cube8Triangle(7,4,0, Color.RED);    //rt гр.
+		triangles[9]=new Cube8Triangle(0,3,7, Color.RED);    //rt гр.
+		triangles[10]=new Cube8Triangle(7,6,5, Color.YELLOW); //в гр.
+		triangles[11]=new Cube8Triangle(5,4,7, Color.YELLOW); //в гр.
 	}
 	
 	void draw( Graphics g, PhisicalSys ps )
 	{
-		for( int i=0; i<6; i++ )
+		for( int i=0; i<triangles.length; i++ )
 			drawGran(g, ps, i);
 	}
 	
@@ -41,7 +47,7 @@ public class Cube8
 	{
 		double C = Math.cos(g); 
 		double S = Math.sin(g);
-		for( int i=0; i<8; i++ )
+		for( int i=0; i<points.length; i++ )
 		{
 			Point3 np = new Point3(); 
 			np.x = points[i].x;
@@ -55,7 +61,7 @@ public class Cube8
 	{
 		double C = Math.cos(g); 
 		double S = Math.sin(g);
-		for( int i=0; i<8; i++ )
+		for( int i=0; i<points.length; i++ )
 		{
 			Point3 np = new Point3(); 
 			np.x = points[i].x * C + points[i].z * S;
@@ -69,7 +75,7 @@ public class Cube8
 	{
 		double C = Math.cos(g); 
 		double S = Math.sin(g);
-		for( int i=0; i<8; i++ )
+		for( int i=0; i<points.length; i++ )
 		{
 			Point3 np = new Point3(); 
 			np.x = points[i].x * C - points[i].y * S;
@@ -91,14 +97,13 @@ public class Cube8
 		double cos = getCosPhiGran(gri);
 		if( cos <= 0 ) return;
 		
-		Cube8Gran cg = grans[gri];
+		Cube8Triangle cg = triangles[gri];
 		
 		g.setColor( Color.mul( cg.color, cos ).getRGB() );
 		
-		Point2 p0 = ps.fromPoint3( points[ cg.indexVert[0] ] );
-		Point2 p1 = ps.fromPoint3( points[ cg.indexVert[1] ] );
-		Point2 p2 = ps.fromPoint3( points[ cg.indexVert[2] ] );
-		Point2 p3 = ps.fromPoint3( points[ cg.indexVert[3] ] );
+		Point2 p0 = ps.fromPoint3( points[ cg.v1 ] );
+		Point2 p1 = ps.fromPoint3( points[ cg.v2 ] );
+		Point2 p2 = ps.fromPoint3( points[ cg.v3 ] );
 		
 		g.fillTriangle(
 				p0.x,
@@ -108,29 +113,21 @@ public class Cube8
 				p2.x,
 				p2.y
 		);
-		g.fillTriangle(
-				p2.x,
-				p2.y,
-				p3.x,
-				p3.y,
-				p0.x,
-				p0.y
-		);
 	}
 	
 	private Point3 getNormalGran(int gri)
 	{
-		Cube8Gran cg = grans[gri];
+		Cube8Triangle cg = triangles[gri];
 		
-		double X1=points[cg.indexVert[0]].x;
-		double Y1=points[cg.indexVert[0]].y;
-		double Z1=points[cg.indexVert[0]].z;
-		double X2=points[cg.indexVert[1]].x;
-		double Y2=points[cg.indexVert[1]].y;
-		double Z2=points[cg.indexVert[1]].z;
-		double X3=points[cg.indexVert[2]].x;
-		double Y3=points[cg.indexVert[2]].y;
-		double Z3=points[cg.indexVert[2]].z;		
+		double X1=points[cg.v1].x;
+		double Y1=points[cg.v1].y;
+		double Z1=points[cg.v1].z;
+		double X2=points[cg.v2].x;
+		double Y2=points[cg.v2].y;
+		double Z2=points[cg.v2].z;
+		double X3=points[cg.v3].x;
+		double Y3=points[cg.v3].y;
+		double Z3=points[cg.v3].z;		
 		
 		double xv = (Y1-Y2)*(Z1-Z3) - (Z1-Z2)*(Y1-Y3);
 		double yv = (Z1-Z2)*(X1-X3) - (X1-X2)*(Z1-Z3);
@@ -151,20 +148,19 @@ public class Cube8
 	}
 }
 
-
-/** Грань куба - индексы вершин и цвет грани. */
-class Cube8Gran
+/** грань треугольник - индексы вершин и цвет грани. квадрат куба - два треугольника*/
+class Cube8Triangle
 {
-	int indexVert[];
+	int v1;
+	int v2;
+	int v3;
 	Color color;
 
-	public Cube8Gran( int v1, int v2, int v3, int v4, Color c)
+	public Cube8Triangle( int v1, int v2, int v3, Color c)
 	{
-		this.indexVert = new int[4];
-		this.indexVert[0] = v1;
-		this.indexVert[1] = v2;
-		this.indexVert[2] = v3;
-		this.indexVert[3] = v4;
+		this.v1 = v1;
+		this.v2 = v2;
+		this.v3 = v3;
 		this.color = c;
 	}	
 }
