@@ -78,10 +78,10 @@ public class AppCubeMIDlet
         if (helpScreen == null)
         {
             helpScreen = new Form("AppCubeMIDlet Help");
-            helpScreen.append("^ = faster\n");
-            helpScreen.append("v = slower\n");
-            helpScreen.append("< = fewer\n");
-            helpScreen.append("> = more\n");
+            helpScreen.append("1,2,3 = rotation\n");
+            helpScreen.append("4, ,5 = rotation\n");
+            helpScreen.append("7,8,9 = rotation\n");
+            helpScreen.append("* = fullscreen\n");
         }
         helpScreen.addCommand(cmToggle);
         helpScreen.setCommandListener(this);

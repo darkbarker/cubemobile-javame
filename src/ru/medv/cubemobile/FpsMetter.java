@@ -9,7 +9,7 @@ public class FpsMetter
 {
 	private long inittime;
 	private long curcount;
-	private long lFps;
+	long lFps;
 
 	FpsMetter()
 	{
