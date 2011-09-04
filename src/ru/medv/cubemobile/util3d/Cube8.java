@@ -85,13 +85,6 @@ public class Cube8
 			np.y = points[i].x * S + points[i].y * C;
 			np.z = points[i].z;			
 			points[i] = np;
-			/*
-			Point3 pcopy = new Point3();
-			pcopy = cube[i];
-			cube[i].x = pcopy.x * C - pcopy.y * S;	
-			cube[i].y = pcopy.x * S + pcopy.y * C;
-			cube[i].z = pcopy.z;
-			*/
 		}
 	}
 
