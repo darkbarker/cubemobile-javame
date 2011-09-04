@@ -41,7 +41,9 @@ public class Cube8
 	public void draw( Graphics g, PhisicalSys ps )
 	{
 		for( int i=0; i<triangles.length; i++ )
+		{
 			drawGran(g, ps, i);
+		}
 	}
 	
 	public void rotX( double g )
@@ -106,14 +108,7 @@ public class Cube8
 		Point2 p1 = ps.fromPoint3( points[ cg.v2 ] );
 		Point2 p2 = ps.fromPoint3( points[ cg.v3 ] );
 		
-		g.fillTriangle(
-				p0.x,
-				p0.y,
-				p1.x,
-				p1.y,
-				p2.x,
-				p2.y
-		);
+		g.fillTriangle( p0.x, p0.y, p1.x, p1.y, p2.x, p2.y );
 	}
 	
 	private Point3 getNormalGran(int gri)
