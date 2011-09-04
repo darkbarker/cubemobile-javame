@@ -1,4 +1,4 @@
-package ru.medv.cubemobile;
+package ru.medv.cubemobile.util3d;
 
 /**
  * Физическая среда, в которой обитает наш объект. Представляет собой информацию

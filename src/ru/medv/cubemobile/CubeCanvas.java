@@ -6,6 +6,10 @@ import java.util.TimerTask;
 import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Graphics;
 
+import ru.medv.cubemobile.util3d.Cube8;
+import ru.medv.cubemobile.util3d.PhisicalSys;
+import ru.medv.cubemobile.util3d.Point2;
+
 /**
  *
  * @author DimOn
