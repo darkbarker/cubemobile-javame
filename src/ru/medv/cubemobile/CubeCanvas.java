@@ -133,6 +133,10 @@ public class CubeCanvas extends Canvas
         g.drawString( "fps: " + fpsm.getFps(), 0+5, 0+fontheight*0, 0 );
         g.drawString( "dps: " + drawMetter.getFps(), 0+5, 0+fontheight*1, 0 );
         g.drawString( "frm: " + fm + "K", 0+5, 0+fontheight*2, 0 );
+        if( paused )
+        {
+        	g.drawString( "paused", 0+5, 0+fontheight*3, 0 );
+        }
         
         drawMetter.proceedevent();
     }
@@ -143,44 +147,44 @@ public class CubeCanvas extends Canvas
         switch(keyCode)
         {
             case KEY_NUM1:
-                valRotX = + 1.0; 
-                valRotY = + 1.0;
-                valRotZ = + 0.5;
+                valRotX += +0.5; 
+                valRotY += +0.5;
+                valRotZ = +0.5;
             break;
             case KEY_NUM2: 
-                valRotX = + 1.0;                 
-                valRotY = 0;
-                valRotZ = + 0.5;
+                valRotX += +0.5;                 
+                valRotY += 0;
+                valRotZ = +0.5;
             break;
              case KEY_NUM3:
-                valRotX = + 1.0; 
-                valRotY = - 1.0;
-                valRotZ = + 0.5;
+                valRotX += +0.5; 
+                valRotY += -0.5;
+                valRotZ = +0.5;
             break;
             case KEY_NUM4:
-                valRotX = 0; 
-                valRotY = + 1.0;
-                valRotZ = + 0.5;
+                valRotX += 0; 
+                valRotY += +0.5;
+                valRotZ = +0.5;
             break;
             case KEY_NUM6:               
-            	valRotX = 0;
-                valRotY = - 1.0;
-                valRotZ = + 0.5;
+            	valRotX += 0;
+                valRotY += -0.5;
+                valRotZ = +0.5;
             break;
             case KEY_NUM7:
-                valRotX = - 1.0; 
-                valRotY = + 1.0;
-                valRotZ = + 0.5;
+                valRotX += -0.5; 
+                valRotY += +0.5;
+                valRotZ = +0.5;
             break;
              case KEY_NUM8: 
-                valRotX = - 1.0;
-                valRotY = 0;
-                valRotZ = + 0.5;
+                valRotX += -0.5;
+                valRotY += 0;
+                valRotZ = +0.5;
             break;
              case KEY_NUM9:
-                valRotX = - 1.0; 
-                valRotY = - 1.0;
-                valRotZ = + 0.5;
+                valRotX += -0.5; 
+                valRotY += -0.5;
+                valRotZ = +0.5;
             break;
              case KEY_STAR:
             	 fullscreen = !fullscreen;
