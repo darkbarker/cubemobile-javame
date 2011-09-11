@@ -17,7 +17,7 @@ public class AppCubeMIDlet
     private Display display;
     private CubeCanvas cubeCanvas;
     private Command cmExit = new Command( "Exit", Command.EXIT, 99 );
-    private Command cmToggle = new Command("Stop/Go", Command.SCREEN, 1);
+    private Command cmToggle = new Command("Start/Stop", Command.SCREEN, 1);
     private Command cmHelp = new Command( "Help", Command.HELP, 2 );
     private Form helpScreen;
     
@@ -82,6 +82,10 @@ public class AppCubeMIDlet
             helpScreen.append("4, ,5 = rotation\n");
             helpScreen.append("7,8,9 = rotation\n");
             helpScreen.append("* = fullscreen\n");
+            helpScreen.append("0 = Start/Stop\n");
+            helpScreen.append("fps = frames per second\n");
+            helpScreen.append("dps = (re)draw per second\n");
+            helpScreen.append("frm = free memory\n");
         }
         helpScreen.addCommand(cmToggle);
         helpScreen.setCommandListener(this);

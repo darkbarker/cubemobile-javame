@@ -9,29 +9,34 @@ public class FpsMetter
 {
 	private long inittime;
 	private long curcount;
-	long lFps;
+	private long lFps;
 
 	FpsMetter()
 	{
 		reset();
 	}
 
-	void reset()
+	synchronized void reset()
 	{
 		inittime = System.currentTimeMillis();
 		curcount = 0L;
 		lFps = 0L;
 	}
 
-	void proceedevent()
+	synchronized long getFps()
 	{
-		long cur = System.currentTimeMillis();
-		++curcount;
-		lFps = curcount * 1000L / (cur - inittime);
+		return lFps;
 	}
 
-	public String toString()
+	synchronized void proceedevent()
 	{
-		return String.valueOf(lFps);
+		long cur = System.currentTimeMillis();
+        if (inittime == cur)
+        {
+            // in case of divide-by-zero
+        	inittime = cur - 1;
+        }
+		++curcount;
+		lFps = curcount * 1000L / (cur - inittime);
 	}
 }
