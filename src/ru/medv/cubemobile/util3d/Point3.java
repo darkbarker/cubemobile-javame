@@ -1,8 +1,8 @@
 package ru.medv.cubemobile.util3d;
 
 /**
- * Трёхмерная дробная точка.
- * @author dimon
+ * Three-dimensional fractional point.
+ * @author darkbarker <barkdarker@gmail.com>
  */
 public class Point3
 {
@@ -20,8 +20,8 @@ public class Point3
     }
 
     /**
-     * Длина вектора.
-     * @return дробное число.
+     * Length of the vector.
+     * @return fractional number.
      */
     public double getVectorLenght()
     {
@@ -29,9 +29,9 @@ public class Point3
     }
 
     /**
-     * Скалярное произведение на другую точку.
-     * @param p3 другая точка
-     * @return скалярное произведение.
+     * Scalar product on another point.
+     * @param p3 another point
+     * @return the scalar product.
      */
     public double getScalar( Point3 p3 )
     {

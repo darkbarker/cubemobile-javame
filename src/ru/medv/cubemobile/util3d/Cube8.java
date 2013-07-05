@@ -4,8 +4,7 @@ import javax.microedition.lcdui.Graphics;
 
 
 /**
- *
- * @author DimOn
+ * @author darkbarker <barkdarker@gmail.com>
  */
 public class Cube8
 {
@@ -125,9 +124,11 @@ public class Cube8
 		return new Point3( xv, yv, zv );
 	}
 	
-	/** Косинус (нормальграни^направлениезрения)
-	 * @param gri - индекс грани
-	 * @return косинус угла между нормалью к грани и вектором на наш глаз 
+	/**
+	 * The cosine (normal to the face ^ the direction of view)
+	 * Косинус (нормальграни^направлениезрения)
+	 * @param gri - face index
+	 * @return cosine of the angle between the normal to the face and the vector in our eyes
 	 */
 	double getCosPhiGran( int gri )
 	{

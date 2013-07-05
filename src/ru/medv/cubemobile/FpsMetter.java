@@ -1,9 +1,9 @@
 package ru.medv.cubemobile;
 
 /**
- * Мерка фпс на основе общего кол-ва тиков от начала времён (со сброса).
- * Почему-то не шибко прилично считает...
- * @author dimon
+ * Measurement fps based on the total number of ticks since the last reset.
+ * For some reason, not very well considered...
+ * @author darkbarker <barkdarker@gmail.com>
  */
 public class FpsMetter
 {

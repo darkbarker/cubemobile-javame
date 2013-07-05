@@ -1,8 +1,8 @@
 package ru.medv.cubemobile.util3d;
 
 /**
- * Цвет, в трёх компонентах. 
- * @author dimon
+ * Color, three components. 
+ * @author darkbarker <barkdarker@gmail.com>
  */
 public class Color
 {
@@ -38,10 +38,10 @@ public class Color
 	
 	/**
 	 * @param c
-	 *            цвет компонентный
+	 *            original color
 	 * @param mul
-	 *            множитель (пусть косинус) [0..1]
-	 * @return измененный (затемненный) цвет
+	 *            factor (let cosine) [0..1]
+	 * @return modified (blackout) color
 	 */
 	static Color mul(Color c, double mul)
 	{

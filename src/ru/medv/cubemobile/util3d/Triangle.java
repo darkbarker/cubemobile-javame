@@ -1,9 +1,9 @@
 package ru.medv.cubemobile.util3d;
 
 /**
- * грань треугольник - индексы вершин и цвет грани.
- * квадрат куба - два треугольника
- * @author dimon 
+ * Side of the triangle - the vertex indices and the color of the face.
+ * Face of the cube - two triangles.
+ * @author darkbarker <barkdarker@gmail.com> 
  */
 class Triangle
 {

@@ -13,15 +13,15 @@ import ru.medv.cubemobile.util3d.Point2;
 
 /**
  *
- * @author DimOn
+ * @author darkbarker <barkdarker@gmail.com>
  */
 public class CubeCanvas extends Canvas
 {
-    private AppCubeMIDlet midlet;  // Главный класс мидлета
-    private int displayWidth, displayHeight; // Размер экрана
+    private AppCubeMIDlet midlet;
+    private int displayWidth, displayHeight;
 
-    private DrawTask drawTask; // таймер
-    //private TimerTask tt; // Задача для выполнения
+    private DrawTask drawTask;
+    //private TimerTask tt;
     
     //--
     private PhisicalSys mySys;
@@ -31,9 +31,9 @@ public class CubeCanvas extends Canvas
     private double valRotY;
     private double valRotZ;	
     
-    /** мериет кол-во вычислений в сек */
+    /** calculations per second */
     private FpsMetter fpsm;
-    /** мериет кол-во отрисовок в сек */
+    /** renderings per second */
     private FpsMetter drawMetter;
     
     boolean paused;
@@ -44,7 +44,7 @@ public class CubeCanvas extends Canvas
     {
         this.midlet = midlet;
         
-		// создаём fps-мерки
+		// fps-metters
         fpsm = new FpsMetter();
         drawMetter = new FpsMetter();
         
@@ -62,7 +62,7 @@ public class CubeCanvas extends Canvas
         recalculateScreen();
     }
     
-    // пересчитывает параметры экрана, например, после перевода из/в фулскрин.
+    // recalculates the display settings, for example, after the transfer to/from full screen mode.
     private void recalculateScreen()
     {
         displayWidth = getWidth();
@@ -79,7 +79,7 @@ public class CubeCanvas extends Canvas
 			paused = false;
 			fpsm.reset();
 			drawMetter.reset();
-			// стартуем таймеры
+			// start timers
 			drawTask = new DrawTask();
 			drawTask.start();
 		}
@@ -87,14 +87,14 @@ public class CubeCanvas extends Canvas
 	}
 
 	/**
-	 * Тут происходит освобождение ресурсов по максимуму.
+	 * Here is the release as many as possible of resources.
 	 */
 	public void pause()
 	{		
         if( !paused )
         {
             paused = true;
-            // стопим таймеры
+            // stop timers
             drawTask.quit();
             drawTask = null;
         }

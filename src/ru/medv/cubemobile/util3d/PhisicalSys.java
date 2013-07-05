@@ -1,9 +1,11 @@
 package ru.medv.cubemobile.util3d;
 
 /**
+ * Physical environment in which we live our object. It is a summarized information
+ * about where the center of the screen and the size of the unit cube on it.
  * Физическая среда, в которой обитает наш объект. Представляет собой информацию
  * обобщённую о том, где цент экрана и какого размера на нём единичный кубикъ.
- * @author dimon
+ * @author darkbarker <barkdarker@gmail.com>
  */
 public class PhisicalSys
 {    
@@ -27,8 +29,8 @@ public class PhisicalSys
     }
 
     /**
-     * @param p точка на физическом холсте
-     * @return двух(трех)мерная точка (xp,yp,0) - проекция на логику 
+     * @param p a point on the physical canvas.
+     * @return two-(three-)dimensional point (xp,yp,0) - the projection on the logical environment
      */
 	public Point3 modifToLogic(Point2 p)
     {

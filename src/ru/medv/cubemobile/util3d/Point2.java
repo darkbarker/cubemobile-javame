@@ -1,8 +1,8 @@
 package ru.medv.cubemobile.util3d;
 
 /**
- * Двумерная целочисленная точка.
- * @author dimon
+ * A two-dimensional integer point.
+ * @author darkbarker <barkdarker@gmail.com>
  */
 public class Point2
 {
