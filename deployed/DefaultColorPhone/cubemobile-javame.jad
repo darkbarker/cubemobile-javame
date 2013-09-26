@@ -1,0 +1,8 @@
+MIDlet-1: cubemobile,,ru.medv.cubemobile.AppCubeMIDlet
+MIDlet-Jar-Size: 12687
+MIDlet-Jar-URL: cubemobile-javame.jar
+MIDlet-Name: cubemobile
+MIDlet-Vendor: dark_barker
+MIDlet-Version: 1.0.12
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.1
